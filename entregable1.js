@@ -10,7 +10,22 @@ class ProductManager {
 
     //creo el metodo addProduct, debe crear el producto con un title, description, price, thumbnail, code, stock
     addProduct(title, description, price, thumbnail, code, stock) {
-        this.products.push({ title, description, price, thumbnail, code, stock, id: incrementalId });
+        for (let i = 0; i < this.products.length; i++) { // el for para chequear que el code
+            if (this.products[i].code === code) {
+                console.log(`el código ${code} ya se encuentra en la colección. Elija otro por favor`);
+                break;
+            }
+        }
+
+        this.products.push({
+            title,
+            description,
+            price,
+            thumbnail,
+            code,
+            stock,
+            id: incrementalId
+        });
         incrementalId++;
     };
 
@@ -19,15 +34,14 @@ class ProductManager {
         return this.products;
     };
 
+    // creo un "sub-metodo" para ver si el id existe en la colección products
+    idInCollection(id) {
+        return this.products.find((product) => product.id === id);
+    }
+
     //creo el metodo getProductById
     getProductById(id) {
-        if (this.products.find((product) => product.id === id)) {
-            console.log("el producto encontrado es el siguiente:")
-            console.log((this.products.find((product) => product.id === id)));
-        } else {
-            console.log("el resultado de la busqueda es el siguiente:")
-            console.log("not found")
-        }
+        this.idInCollection(id) ? console.log(this.idInCollection(id)) : console.log("not found");
     }
 };
 
@@ -51,5 +65,5 @@ productsArray.addProduct("producto prueba", "Este es un producto prueba", 200, "
 console.log(productsArray.getProducts());
 
 //busco el producto por id (testeo)
-productsArray.getProductById(3);
+productsArray.getProductById(2);
 
