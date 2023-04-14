@@ -59,14 +59,15 @@ class ProductManager {
 
 
 
-/////////////////////////creo la constante productManager/////////////////////////
+//creo la constante productManager
 const productManager = new ProductManager();
-/////////////////////////////////////////////////////////////////////////////////
 
+
+
+//Comprobaciones
 
 //primer console.log para mostrar el array vacio (testeo)
 console.log(productManager.getProducts());
-
 
 //agregar producto de testeo
 productManager.addProduct("producto prueba", "Este es un producto prueba", 200, "sin imagen", "abc123", 25);
@@ -77,11 +78,8 @@ productManager.addProduct("producto prueba 2", "Este es un producto prueba", 200
 //agrego producto con codigo repetido para comprobar
 productManager.addProduct("producto prueba 3", "Este es un producto prueba", 200, "sin imagen", "abc123", 10);
 
-
-
 //agrego un producto que no cumple con completar todos los valores
 productManager.addProduct("producto prueba 4", "Este es un producto prueba", 200, "sin imagen", 1);
-
 
 //compruebo que el array products  acumule los objetos con sus respectivos id 
 console.log(productManager.getProducts());
